@@ -83,8 +83,14 @@ body {
 	align-items: center;
 	width: 100%;
 	height: 100vh;
+	transform: translateX(100%);
+	transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
 	background-image: $blue-gradient-solid;
 	z-index: 100;
+
+	&--active {
+		transform: translateX(0);
+	}
 
 	&__item {
 		position: relative;
@@ -104,14 +110,26 @@ body {
 			width: 3px;
 			background-color: $pure-white;
 			transform: scale(0);
-			transition: transform .3s;
+			transition: transform 0.3s;
 		}
 
-		
 		&:hover::before {
 			transform: scale(1);
 		}
 	}
+}
+
+@keyframes navItemsAnimation {
+	from {
+		transform: translateX(200%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.nav-items-animation {
+	animation: navItemsAnimation 1s;
 }
 
 // header
